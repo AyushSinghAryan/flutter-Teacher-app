@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "189252929022",
+    "project_id": "teacher-app-402b3",
+    "storage_bucket": "teacher-app-402b3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:189252929022:android:17922d5044261ec7e02caf",
+        "android_client_info": {
+          "package_name": "com.example.flutter_teacher_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCMqXNLFjhCnFGQYx3ntY8LalDHuU4shfE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
