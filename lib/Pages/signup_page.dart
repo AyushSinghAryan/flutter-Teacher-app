@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_teacher_app/Pages/home_page.dart';
 import 'package:flutter_teacher_app/Pages/login_page.dart';
+import 'package:flutter_teacher_app/Pages/verification_page.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -43,16 +43,15 @@ class _SignUpPageState extends State<SignUpPage> {
       User? user = credential.user;
       if (user != null && !user.emailVerified) {
         await user.sendEmailVerification();
-        // ignore: use_build_context_synchronously
         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
           content: Text('Verification email sent! Please check your email.'),
         ));
-        // ignore: use_build_context_synchronously
         Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(
-              builder: (context) => HomePage(),
-            ));
+          context,
+          MaterialPageRoute(
+            builder: (context) => VerificationPage(user: user),
+          ),
+        );
       }
     } on FirebaseAuthException catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -74,12 +73,24 @@ class _SignUpPageState extends State<SignUpPage> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  Text(
-                    "Teacher App",
-                    style: TextStyle(
-                        color: Theme.of(context).colorScheme.secondary,
-                        fontSize: 45,
-                        fontWeight: FontWeight.bold),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Teacher",
+                        style: TextStyle(
+                            color: Colors.blue,
+                            fontSize: 40.0,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        "App",
+                        style: TextStyle(
+                            color: Colors.orange,
+                            fontSize: 40.0,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ],
                   ),
                   const SizedBox(
                     height: 10,
@@ -108,11 +119,20 @@ class _SignUpPageState extends State<SignUpPage> {
                   const SizedBox(
                     height: 20,
                   ),
-                  CupertinoButton(
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.white,
+                      backgroundColor: Colors.orange, // Text color
+                      minimumSize: Size(350, 50), // Width and height
+                      shape: RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.circular(8), // Rectangle shape
+                      ),
+                      elevation: 10, // Shadow elevation
+                    ),
                     onPressed: () {
                       checkValues();
                     },
-                    color: Theme.of(context).colorScheme.secondary,
                     child: Text("Sign Up"),
                   ),
                 ],
@@ -139,7 +159,7 @@ class _SignUpPageState extends State<SignUpPage> {
               },
               child: const Text(
                 "Log In",
-                style: TextStyle(fontSize: 16),
+                style: TextStyle(fontSize: 16, color: Colors.blue),
               ),
             ),
           ],

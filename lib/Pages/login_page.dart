@@ -81,12 +81,24 @@ class _LoginPageState extends State<LoginPage> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  Text(
-                    "Login",
-                    style: TextStyle(
-                        color: Theme.of(context).colorScheme.secondary,
-                        fontSize: 45,
-                        fontWeight: FontWeight.bold),
+                  const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Log",
+                        style: TextStyle(
+                            color: Colors.blue,
+                            fontSize: 40.0,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      Text(
+                        "In",
+                        style: TextStyle(
+                            color: Colors.orange,
+                            fontSize: 40.0,
+                            fontWeight: FontWeight.bold),
+                      ),
+                    ],
                   ),
                   const SizedBox(
                     height: 10,
@@ -107,11 +119,20 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(
                     height: 20,
                   ),
-                  CupertinoButton(
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.white,
+                      backgroundColor: Colors.orange, // Text color
+                      minimumSize: Size(350, 50), // Width and height
+                      shape: RoundedRectangleBorder(
+                        borderRadius:
+                            BorderRadius.circular(8), // Rectangle shape
+                      ),
+                      elevation: 10, // Shadow elevation
+                    ),
                     onPressed: () {
                       checkValues();
                     },
-                    color: Theme.of(context).colorScheme.secondary,
                     child: const Text("Log In"),
                   ),
                 ],
@@ -139,7 +160,7 @@ class _LoginPageState extends State<LoginPage> {
               },
               child: const Text(
                 "Sign Up",
-                style: TextStyle(fontSize: 16),
+                style: TextStyle(fontSize: 16, color: Colors.blue),
               ),
             ),
           ],
